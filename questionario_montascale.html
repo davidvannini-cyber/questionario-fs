@@ -8,23 +8,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
   :root {
-    --bg: #0d0d0f;
-    --bg2: #111318;
-    --navy: #0d0d0f;
-    --navy-mid: #111318;
-    --navy-light: #161c28;
-    --accent: #3ff0c8;
-    --accent2: #4d7fff;
-    --accent-soft: rgba(63,240,200,0.12);
-    --text: #e8eeff;
-    --text-muted: #6a85b0;
-    --cyan-muted: #3fc8f0aa;
-    --border: rgba(63,240,200,0.18);
-    --card: rgba(255,255,255,0.035);
-    --card-hover: rgba(63,240,200,0.06);
+    --bg: #f0f4f8;
+    --bg2: #e8edf2;
+    --navy: #f0f4f8;
+    --navy-mid: #e2e8f0;
+    --navy-light: #d8e2ed;
+    --accent: #1a56db;
+    --accent2: #0e9f6e;
+    --accent-soft: rgba(26,86,219,0.10);
+    --text: #1a202c;
+    --text-muted: #4a5568;
+    --cyan-muted: #1a56dbbb;
+    --border: rgba(26,86,219,0.22);
+    --card: rgba(255,255,255,0.75);
+    --card-hover: rgba(26,86,219,0.06);
     --radius: 14px;
-    --danger: #ff5566;
-    --glow: 0 0 18px rgba(63,240,200,0.25);
+    --danger: #e53e3e;
+    --glow: 0 2px 12px rgba(26,86,219,0.15);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,13 +36,13 @@
     font-weight: 400;
     min-height: 100vh;
     background-image:
-      radial-gradient(ellipse at 15% 0%, rgba(63,240,200,0.07) 0%, transparent 55%),
-      radial-gradient(ellipse at 85% 90%, rgba(77,127,255,0.06) 0%, transparent 50%);
+      radial-gradient(ellipse at 15% 0%, rgba(26,86,219,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 90%, rgba(14,159,110,0.05) 0%, transparent 50%);
   }
 
   /* HEADER */
   header {
-    background: linear-gradient(180deg, #161c28 0%, #0d0d0f 100%);
+    background: linear-gradient(180deg, #1e3a6e 0%, #1a2f5e 100%);
     border-bottom: 1px solid var(--border);
     padding: 28px 24px 20px;
     text-align: center;
@@ -55,7 +55,7 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
     opacity: 0.6;
   }
   .logo-wrap {
@@ -69,14 +69,14 @@
   .logo-img {
     height: 94px;
     width: auto;
-    filter: drop-shadow(0 0 12px rgba(63,240,200,0.3));
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
   }
   .brand-name { display: none; }
   .brand-sub {
     font-size: 10px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--cyan-muted);
+    color: rgba(180,210,255,0.9);
     margin-top: 2px;
   }
   header p.desc {
@@ -123,7 +123,7 @@
   .section-title .num {
     width: 24px; height: 24px;
     background: var(--accent-soft);
-    border: 1px solid var(--accent); box-shadow: var(--glow);
+    border: 1px solid #4d7fff; box-shadow: 0 4px 20px rgba(26,86,219,0.3);
     color: var(--accent);
     border-radius: 6px;
     font-family: 'DM Sans', sans-serif;
@@ -153,7 +153,7 @@
   .field textarea,
   .field select {
     width: 100%;
-    background: rgba(255,255,255,0.06);
+    background: #ffffff;
     border: 1px solid rgba(63,240,200,0.18);
     border-radius: 8px;
     color: var(--text);
@@ -168,10 +168,10 @@
   .field textarea:focus,
   .field select:focus {
     border-color: var(--accent);
-    background: rgba(255,255,255,0.09);
+    background: #f7faff;
   }
   .field textarea { resize: vertical; min-height: 80px; }
-  .field select option { background: var(--navy-mid); color: var(--text); }
+  .field select option { background: #ffffff; color: #1a202c; }
 
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
@@ -191,7 +191,7 @@
     display: flex;
     align-items: center;
     gap: 7px;
-    background: rgba(255,255,255,0.05);
+    background: #ffffff;
     border: 1px solid rgba(63,240,200,0.12);
     border-radius: 8px;
     padding: 7px 14px;
@@ -204,7 +204,7 @@
     transition: background 0.15s, border-color 0.15s;
     user-select: none;
   }
-  .check-group label:hover { background: rgba(63,240,200,0.08); border-color: var(--accent); }
+  .check-group label:hover { background: rgba(26,86,219,0.08); border-color: var(--accent); }
   .check-group input[type=checkbox],
   .check-group input[type=radio] { accent-color: var(--accent); width: 15px; height: 15px; }
 
@@ -217,7 +217,7 @@
   @media(max-width: 460px) { .rating-grid { grid-template-columns: 1fr; } }
 
   .rating-item {
-    background: rgba(255,255,255,0.04);
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 10px 14px;
@@ -235,7 +235,7 @@
   .star-row label {
     width: 30px; height: 30px;
     border-radius: 6px;
-    background: rgba(255,255,255,0.06);
+    background: #ffffff;
     border: 1px solid rgba(63,240,200,0.12);
     display: flex; align-items: center; justify-content: center;
     font-size: 13px;
@@ -257,8 +257,8 @@
 
   /* DATI SCALA AREA */
   .scala-area {
-    background: rgba(255,255,255,0.04);
-    border: 1px dashed rgba(63,240,200,0.25);
+    background: #ffffff;
+    border: 1px dashed rgba(26,86,219,0.3);
     border-radius: 8px;
     min-height: 120px;
     padding: 14px;
@@ -270,11 +270,11 @@
     resize: vertical;
     transition: border-color 0.2s;
   }
-  .scala-area:focus { border-color: var(--accent); color: var(--text); }
+  .scala-area:focus { border-color: var(--accent); color: #1a202c; }
 
   /* FIRMA */
   canvas#firma {
-    background: rgba(63,240,200,0.03);
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 8px;
     width: 100%;
@@ -347,7 +347,7 @@
   }
   .modal-overlay.active { display: flex; }
   .modal {
-    background: var(--navy-mid);
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 32px 28px;
@@ -355,8 +355,8 @@
     width: 90%;
     text-align: center;
   }
-  .modal h3 { font-family: 'DM Sans', sans-serif; font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size: 16px; color: var(--accent); margin-bottom: 12px; }
-  .modal p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
+  .modal h3 { font-family: 'DM Sans', sans-serif; font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size: 16px; color: #1a56db; margin-bottom: 12px; }
+  .modal p { font-size: 14px; color: #4a5568; margin-bottom: 24px; line-height: 1.6; }
   .modal-btns { display: flex; gap: 12px; justify-content: center; }
 
   /* FOOTER */
@@ -366,8 +366,8 @@
   .toast {
     position: fixed;
     bottom: 28px; right: 28px;
-    background: var(--navy-light);
-    border: 1px solid var(--accent); box-shadow: var(--glow);
+    background: #1e3a6e;
+    border: 1px solid #4d7fff; box-shadow: 0 4px 20px rgba(26,86,219,0.3);
     border-radius: 10px;
     padding: 14px 22px;
     color: var(--text);
@@ -711,11 +711,11 @@ function getPos(e) {
   return { x: (src.clientX - r.left) * (canvas.width / r.width), y: (src.clientY - r.top) * (canvas.height / r.height) };
 }
 canvas.addEventListener('mousedown', e => { drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
-canvas.addEventListener('mousemove', e => { if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = '#3ff0c8'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke(); });
+canvas.addEventListener('mousemove', e => { if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = '#1a56db'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke(); });
 canvas.addEventListener('mouseup', () => drawing = false);
 canvas.addEventListener('mouseleave', () => drawing = false);
 canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, { passive: false });
-canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = '#3ff0c8'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke(); }, { passive: false });
+canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = '#1a56db'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke(); }, { passive: false });
 canvas.addEventListener('touchend', () => drawing = false);
 function clearFirma() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
 
